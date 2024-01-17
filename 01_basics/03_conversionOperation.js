@@ -71,3 +71,6 @@ console.log(+"Jayant"); //NaN
 let gamecnt = 100;
 gamecnt++;
 console.log(gamecnt);
+
+// link to study
+// https://tc39.es/ecma262/multipage/abstract-operations.html#sec-type-conversion
