@@ -1,6 +1,6 @@
 let myDate = new Date();
 console.log(myDate); //2024-01-19T08:45:02.552Z
-console.log(typeof myDate); //clear
+console.log(typeof myDate); //object
 
 console.log(myDate.toString()); //Fri Jan 19 2024 14:15:02 GMT+0530 (India Standard Time)
 
@@ -34,7 +34,9 @@ console.log(myCreatedDate3.toLocaleString()); //13/1/2023, 5:30:00 am
 let myCreatedDate4 = new Date("01-13-2023");
 console.log(myCreatedDate4.toLocaleString()); //13/1/2023, 12:00:00 am
 
+//! Timestamp
 console.log(Date.now()); //1705654564426 (Date in milliseconds)
+
 console.log(myCreatedDate.getTime()); //1674412200000 milliseconds
 
 //! Wants seconds
@@ -48,9 +50,10 @@ console.log(newDate.getMonth() + 1); //Jan -> 1
 console.log(newDate.getDay()); //Sunday - Saturday : 0 - 6
 
 //! If you want more Customizations
-let date1=newDate.toLocaleString('default', {
-    dateStyle:"full",
-    timeStyle:"short",
-    hour12:false
-})
-console.log(date1) //Friday, 19 January, 2024 at 14:40
+let date1 = newDate.toLocaleString("default", {
+  dateStyle: "full",
+  timeStyle: "short",
+  hour12: false,
+  weekday: "long" //monday long rhe
+});
+console.log(date1); //Friday, 19 January, 2024 at 14:40

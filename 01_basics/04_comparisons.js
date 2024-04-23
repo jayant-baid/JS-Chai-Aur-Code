@@ -21,6 +21,7 @@ console.log(null >= 0); //1
 console.log(undefined == 0); //0
 console.log(undefined > 0); //0
 console.log(undefined < 0); //0
+console.log(undefined >= 0); //0
 // Undefined ke sath ans false hi aaega
 
 // === Strick Check (check value and datatype)

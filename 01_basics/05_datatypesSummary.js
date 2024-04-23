@@ -1,4 +1,6 @@
-//* Primitive
+// How to store the data in the memory and access that, acc to that we have 2 categories
+
+//* Primitive -> call by value
 //  7 types : String, Number, Boolearn, null, undefined, Symbol, BigInt
 
 /* JavaScript is a dynamically typed language, 
@@ -18,9 +20,9 @@ const anotherId = Symbol("123");
 
 console.log(id === anotherId); //0 => because symbol provides uniqueness
 
-// const bigNumber = 3456543576654356754n
+const bigNumber = 3456543576654356754n;
 
-//* Reference (Non primitive)
+//* Reference (Non primitive) -> call by refernce
 // Array, Objects, Functions
 // Sbke typeof object/function hi h
 const heros = ["shaktiman", "naagraj", "doga"];
