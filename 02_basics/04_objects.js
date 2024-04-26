@@ -83,8 +83,8 @@ const { courseInstuctor, price } = course;
 //                  key: name
 const { courseInstuctor: instructor } = course;
 
-console.log(courseInstuctor, price);
-console.log(instructor);
+console.log(courseInstuctor, price); // Jayant 999
+console.log(instructor); // Jayant
 
 //! JSON Talk
 /*

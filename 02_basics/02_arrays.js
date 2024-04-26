@@ -16,8 +16,10 @@ console.log(newArr1);
 const anotherArr = [1, 2, 3, [4, 5, 6], 7, [6, 7, [4, 5]]];
 const realAnotherArr = anotherArr.flat(Infinity); // (depth) -> kitni depth tk flat karna chahte ho, in this case, we can write 2, but infinity se woh automatically sbkuch ko 1 array ke elements me convert kar dega
 console.log(realAnotherArr); // Array containing all elements of anotherArr spread throughout
+// [ 1, 2, 3, 4, 5, 6, 7, 6, 7, 4, 5 ]
 
-console.log(Array.isArray("Jayant"));
+console.log(Array.isArray("Jayant")); //false
+
 console.log(Array.from("Jayant")); //[ 'J', 'a', 'y', 'a', 'n', 't' ]
 console.log(Array.from({ name: "Jayant" })); //[]
 // Humme batana padega ki kis ka array banau, keys ka, ya fir values ka

@@ -28,10 +28,14 @@ console.log(newArr); //1,2,3,5,6,7 -> string
 //* slice, splice
 // arr -> [ 1, 2, 3, 5, 6, 7 ]
 const myn1 = arr.slice(1, 3);
+// Includes 1 to 2 indexes data, 3 index excluded 
+// [ , )
 console.log(myn1); //[2,3]
-console.log(arr);
+console.log(arr); // [ 1, 2, 3, 5, 6, 7 ]
 
 //? Remove those elements in the splice range and add them in the new array and remaining elements will be acted as the previous array
 const myn2 = arr.splice(1, 3);
+// Includes 1 to 3, 3 included 
+// [ , ]
 console.log(myn2); //[2, 3, 5]
-console.log(arr);
+console.log(arr); // [ 1, 6, 7 ]
