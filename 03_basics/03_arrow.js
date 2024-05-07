@@ -45,7 +45,7 @@ const chai3 = () => {
 };
 chai3();
 
-//* Implicit Return
+//* Explicit Return
 const addTwo = (n1, n2) => {
   return n1 + n2;
 };
