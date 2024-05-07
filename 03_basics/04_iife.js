@@ -15,6 +15,8 @@ chai();
 })();
 // (function defintion)() -> function execution
 
+//! Unnamed IIFE 
+//* For IIFE, we want semi clone at the end of the function
 // Arror Function IIFE
 (()=> {
     console.log("first arrow function")
@@ -24,8 +26,7 @@ chai();
     console.log("first 2")
 })();
 
-// For IIFE, we want semi clone at the end of the function
-//! Unnamed IIFE 
+
 ((name) => {
     console.log(`DB Connected, ${name}`)
 })("Jayant Always Rocks");
