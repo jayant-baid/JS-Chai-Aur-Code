@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM - Edit, Remove</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    function addLanguage(langName) {
+      const li = document.createElement("li");
+      li.innerHTML = `${langName}`;
+      //innerHTML ka use karne se woh pure
+      //tree ko pehle traverse karta h and
+      //leaf node pe jata h fir append karta h
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addLanguage("C++");
+    addLanguage("Java");
+
+    // More optimized
+    function addOptimizedLanguage(langName) {
+      const li = document.createElement("li");
+
+      li.appendChild(document.createTextNode(langName));
+
+      document.querySelector(".language").appendChild(li);
+    }
+
+    addOptimizedLanguage("Golang");
+
+    // EDIT
+    const secLang = document.querySelector("li:nth-child(2)");
+    // secLang.innerHTML = "Mojo"; // Not an Optimized One
+    // Optimized One
+    const newLi = document.createElement("li");
+    newLi.textContent = "Mojo";
+    secLang.replaceWith(newLi);
+
+    // Edit another language
+    const firstLanguage = document.querySelector("li:first-child");
+    /*
+     const newLangLi = document.createElement("li")
+     newLangLi.textContent="Ruby"
+     firstLanguage.replaceWith(newLangLi);
+    */
+    firstLanguage.outerHTML = "<li>TypeScript</li>";
+
+    // REMOVE
+    const removeLang = document.querySelector("li:last-child");
+    // document.querySelector(".language").removeChild(removeLang);
+    removeLang.remove();
+  </script>
+</html>

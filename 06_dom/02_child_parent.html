@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 2</title>
+  </head>
+  <body style="background-color: #212121; color: aliceblue">
+    <div class="parent">
+      <!-- This is a comment -->
+      <div class="day">Monday</div>
+      <div class="day">Tuesday</div>
+      <div class="day">Wednesday</div>
+      <div class="day">Thursday</div>
+    </div>
+  </body>
+  <script>
+    const parent = document.querySelector(".parent");
+    console.log(parent);
+    console.log(parent.children); // it gives a HTML Collection of all its children
+
+    console.log(parent.children[0].innerHTML);
+
+    for (let i = 0; i < parent.children.length; i++) {
+      console.log(parent.children[i].innerHTML);
+    }
+
+    parent.children[1].style.color = "orange";
+
+    console.log(parent.firstElementChild); // gives first child of parent
+    console.log(parent.lastElementChild); // gives last child of parent
+
+    const dayOne = document.querySelector(".day");
+    console.log(dayOne); // gives div of monday
+
+    //   From Children, to find its parent
+    console.log(dayOne.parentElement); // gives parent of dayOne
+    console.log(dayOne.parentNode);
+
+    console.log(dayOne.nextElementSibling); // gives next sibling of dayOne: Tuesday
+
+    console.log("Nodes: ", parent.childNodes); // o/p 9
+    //   Because yeh enter ko bhi cnt karta h: -> it is a complte tree like structure
+
+    // If we write a new line as comment, then o/p will be 11
+    // As we have enter a new line, so now, it doesn't matter how many new extra lines we will add, it will cnt as 1, so o/p is 11
+    // [text, comment, text, div.day, text, div.day, text, div.day, text, div.day, text]
+  </script>
+</html>
