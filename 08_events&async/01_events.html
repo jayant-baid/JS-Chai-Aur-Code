@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Events</title>
+  </head>
+  <body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    // JS events runs sequentially, some exceptions are there.
+    // JS is the sequentially running language
+
+    // 1. img me bhi onclick user kar skte h but production ke lie not a good practice
+
+    // 2. Onclick me features km h, so always use event Listeners in pure js
+    // document.getElementById('owl').onclick = function(){
+    //     alert('owl click');
+    // }
+
+    // 3. Best Approach
+    // document.getElementById("owl").addEventListener("click", () => {
+    //   alert("owl clicked again");
+    // }, false);
+    // ** default false hi hota h, so hum usse nhi likhte
+
+    // Another Approaches
+    // attachEvent()
+    // jQuery framework -> "on" event Listeners
+
+    // document.getElementById("owl").addEventListener("click", (e) => {
+    //   console.log(e);
+    // },false);
+
+    // See these: type, timestamp, defaultPrevented, target,
+    //            toElement, target, currentTarget
+    //            clientX, clientY, screenX, screenY
+    //            altkey, ctrlKey, shiftkey, keyCode
+
+    // Event Propagation -> event bubbling, event capturing
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log("Clicked inside the ul");
+    //   },
+    //   false
+    // );
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log("Owl clicked");
+    //     e.stopPropagation();
+    //     // stop from bubbling
+    //   },
+    //   false
+    // );
+
+    // Bubbling: inside se outside
+    /* 
+        Owl clicked
+        Clicked inside the ul
+    */
+
+    // document.getElementById("images").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log("Clicked inside the ul");
+    //   },
+    //   true
+    // );
+
+    // document.getElementById("owl").addEventListener(
+    //   "click",
+    //   (e) => {
+    //     console.log("Owl clicked");
+    //   },
+    //   true
+    // );
+    /*
+      capturing mode: top se bottom
+        Clicked inside the ul
+        Owl clicked
+    */
+
+    document.getElementById("google").addEventListener(
+      "click",
+      (e) => {
+        e.preventDefault();
+        // e.stopPropagation();
+        console.log("google");
+      },
+      false
+    );
+
+    //! Task is to when we click on the img, it will be deleted/hidden
+    // document.querySelector('#images').addEventListener('click', (e)=>{
+    //     console.log(e.target.parentNode); //img ka parent -> li <- o/p
+    //     let removeIt=e.target.parentNode;
+    //     removeIt.remove(); // method 1
+    //     // removeIt.parentNode.removeChild(removeIt); // method 2
+
+    //     //*** Jb hum li pr click karenge, like outside of img, then uska parent ul and usse completely delete kardega
+    // EVENT SPILL OF AND have to solve this problem
+    // }, false);
+
+    document.querySelector("#images").addEventListener(
+      "click",
+      (e) => {
+        console.log(e.target.tagName);
+        if (e.target.tagName === "IMG") {
+          console.log(e.target.id);
+          let removeIt = e.target.parentNode;
+          removeIt.remove(); // method 1
+        }
+        // removeIt.parentNode.removeChild(removeIt); // method 2
+      },
+      false
+    );
+  </script>
+</html>
