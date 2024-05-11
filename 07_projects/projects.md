@@ -76,6 +76,7 @@ form.addEventListener("submit", (e) => {
 ### PROJECT 3
 
 ![image3](images/image3.png)
+
 _Want to continuously show the current time: digital clock_
 
 ```javascript
