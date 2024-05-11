@@ -70,3 +70,22 @@ form.addEventListener("submit", (e) => {
 
 // console.log(height)
 ```
+
+### PROJECT 3
+
+![image3](images/image3.png)
+_Want to continuously show the current time: digital clock_
+
+```javascript
+const clock = document.querySelector("#clock");
+
+// let date = new Date();
+// console.log(date.toLocaleTimeString());
+
+// Isko ek func dedo and bta do ek interval, and uss interval ke baad woh continuously chalta rhega.
+setInterval(function () {
+  let date = new Date();
+  // console.log(date.toLocaleTimeString());
+  clock.textContent = date.toLocaleTimeString();
+}, 1000);
+```
