@@ -1,5 +1,7 @@
 # Projects related to DOM
 
+### Project Link: *[Click here](https://stackblitz.com/edit/dom-project-chaiaurcode?file=index.html)*
+
 ## SOLUTION CODE
 
 ### PROJECT 1
@@ -88,4 +90,105 @@ setInterval(function () {
   // console.log(date.toLocaleTimeString());
   clock.textContent = date.toLocaleTimeString();
 }, 1000);
+```
+
+### PROJECT 4
+![Image4](images/image4.png)
+
+```javascript
+let  randomNum = parseInt(Math.random() * 100 + 1);
+
+const submit = document.querySelector('#subt');
+const userInput = document.querySelector('#guessField');
+const guessSlot = document.querySelector('.guesses');
+const remaining = document.querySelector('.lastResult');
+const lowOrHi = document.querySelector('.lowOrHi');
+const startOver = document.querySelector('.resultParas');
+
+const p = document.createElement('p');
+let prevGuess = [];
+let numGuess = 1;
+
+let playGame = true;
+
+if (playGame) {
+  submit.addEventListener('click', (e) => {
+    e.preventDefault();
+    const guess = parseInt(userInput.value);
+    console.log(guess);
+    validateGuess(guess);
+  });
+}
+
+function validateGuess(guess) {
+  // validation to check no. should be b/w 1-100
+  if (isNaN(guess)) {
+    alert('Please enter a valid number');
+  } else if (guess < 1) alert('Please enter a number greater than 1');
+  else if (guess > 100) alert('Please enter a number less than 100');
+  else {
+    prevGuess.push(guess);
+    if (numGuess === 10) {
+      displayGuess(guess);
+      displayMsg(`Game Over. Random No. was ${randomNum}`);
+      endGame();
+    } else {
+      displayGuess(guess);
+      checkGuess(guess);
+    }
+  }
+}
+
+function checkGuess(guess) {
+  // Check no. is equal to the no. and then display that u win
+  if (guess === randomNum) {
+    displayMsg(`You guessed it right`);
+    endGame();
+  } else if (guess < randomNum) {
+    displayMsg(`Number is too low`);
+  } else if (guess > randomNum) {
+    displayMsg(`Number is too high`);
+  }
+}
+
+function displayGuess(guess) {
+  // CleanUP method
+  // clean the valu, update the prev quess, remaining guess
+  userInput.value = '';
+  guessSlot.innerHTML += ` ${guess}`;
+  numGuess++;
+  remaining.innerHTML = `${11 - numGuess}`;
+}
+
+function displayMsg(msg) {
+  // interact with dom
+  lowOrHi.innerHTML = `<h2>${msg}</h2>`;
+}
+
+function endGame() {
+  userInput.value = '';
+  userInput.setAttribute('disabled', '');
+  p.classList.add('button');
+  p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
+  startOver.appendChild(p);
+  
+  playGame = false;
+  
+  newGame();
+}
+
+function newGame() {
+  const newGameBtn = document.querySelector('#newGame');
+  newGameBtn.addEventListener('click', (e)=>{
+    let  randomNum = parseInt(Math.random() * 100 + 1);
+    
+    prevGuess=[]    
+    numGuess=1
+    guessSlot.innerHTML=''
+    remaining.innerHTML = `${11 - numGuess}`;
+    userInput.removeAttribute('disabled');
+    startOver.removeChild(p);
+    playGame = true;
+  })
+}
 ```
