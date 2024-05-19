@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Jayant Baid</h1>
+  <button id="stop">Stop</button>
+</body>
+
+<script>
+  // SetTImeout -> Core JS ka part nhi h, browser se milta h
+  // ex: settimeout, setinterval, clearinterval, cleartimeout func
+
+  // setTimeout(() => {
+  //     console.log("Jayant Baid")
+  // }, 2000)
+
+  const sayJayant = () => {
+    console.log("Jayant Baid");
+  };
+
+  const changeText = function () {
+    document.querySelector("h1").innerHTML = "Best Gaming ytber";
+  };
+
+  const changeMe = setTimeout(changeText, 2000);
+
+  document.querySelector("#stop").addEventListener("click", () => {
+    clearTimeout(changeMe); // Yeh uss timeout ko
+    console.log("Stop");
+  });
+
+  //! setInterval: har woh kaam ko uss time ke baad continuously karta hi jaega
+</script>
+
+</html>

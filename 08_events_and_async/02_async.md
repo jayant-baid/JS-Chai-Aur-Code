@@ -22,4 +22,4 @@ Then comes the execution context
 - Read file async
 
 ## Event Loop
-![alt text](image.png)
+![alt text](images/image.png)

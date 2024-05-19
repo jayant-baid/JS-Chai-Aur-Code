@@ -1,10 +1,10 @@
 # Projects related to DOM
 
-### Project Link: *[Click here](https://stackblitz.com/edit/dom-project-chaiaurcode?file=index.html)*
+### Project Link: _[Click here](https://stackblitz.com/edit/dom-project-chaiaurcode?file=index.html)_
 
 ## SOLUTION CODE
 
-### PROJECT 1
+### PROJECT 1: Pick & Change BG Color
 
 ![Project 1](images/image1.png)
 
@@ -35,7 +35,7 @@ btns.forEach((btn) => {
 });
 ```
 
-### PROJECT 2
+### PROJECT 2: Calculate BMI
 
 ![alt text](images/image2.png)
 
@@ -73,7 +73,7 @@ form.addEventListener("submit", (e) => {
 // console.log(height)
 ```
 
-### PROJECT 3
+### PROJECT 3: Display Current Time
 
 ![image3](images/image3.png)
 
@@ -93,27 +93,28 @@ setInterval(function () {
 }, 1000);
 ```
 
-### PROJECT 4
+### PROJECT 4: Guess a Number
+
 ![Image4](images/image4.png)
 
 ```javascript
-let  randomNum = parseInt(Math.random() * 100 + 1);
+let randomNum = parseInt(Math.random() * 100 + 1);
 
-const submit = document.querySelector('#subt');
-const userInput = document.querySelector('#guessField');
-const guessSlot = document.querySelector('.guesses');
-const remaining = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-const startOver = document.querySelector('.resultParas');
+const submit = document.querySelector("#subt");
+const userInput = document.querySelector("#guessField");
+const guessSlot = document.querySelector(".guesses");
+const remaining = document.querySelector(".lastResult");
+const lowOrHi = document.querySelector(".lowOrHi");
+const startOver = document.querySelector(".resultParas");
 
-const p = document.createElement('p');
+const p = document.createElement("p");
 let prevGuess = [];
 let numGuess = 1;
 
 let playGame = true;
 
 if (playGame) {
-  submit.addEventListener('click', (e) => {
+  submit.addEventListener("click", (e) => {
     e.preventDefault();
     const guess = parseInt(userInput.value);
     console.log(guess);
@@ -124,9 +125,9 @@ if (playGame) {
 function validateGuess(guess) {
   // validation to check no. should be b/w 1-100
   if (isNaN(guess)) {
-    alert('Please enter a valid number');
-  } else if (guess < 1) alert('Please enter a number greater than 1');
-  else if (guess > 100) alert('Please enter a number less than 100');
+    alert("Please enter a valid number");
+  } else if (guess < 1) alert("Please enter a number greater than 1");
+  else if (guess > 100) alert("Please enter a number less than 100");
   else {
     prevGuess.push(guess);
     if (numGuess === 10) {
@@ -155,7 +156,7 @@ function checkGuess(guess) {
 function displayGuess(guess) {
   // CleanUP method
   // clean the valu, update the prev quess, remaining guess
-  userInput.value = '';
+  userInput.value = "";
   guessSlot.innerHTML += ` ${guess}`;
   numGuess++;
   remaining.innerHTML = `${11 - numGuess}`;
@@ -167,29 +168,94 @@ function displayMsg(msg) {
 }
 
 function endGame() {
-  userInput.value = '';
-  userInput.setAttribute('disabled', '');
-  p.classList.add('button');
+  userInput.value = "";
+  userInput.setAttribute("disabled", "");
+  p.classList.add("button");
   p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
   startOver.appendChild(p);
-  
+
   playGame = false;
-  
+
   newGame();
 }
 
 function newGame() {
-  const newGameBtn = document.querySelector('#newGame');
-  newGameBtn.addEventListener('click', (e)=>{
-    let  randomNum = parseInt(Math.random() * 100 + 1);
-    
-    prevGuess=[]    
-    numGuess=1
-    guessSlot.innerHTML=''
+  const newGameBtn = document.querySelector("#newGame");
+  newGameBtn.addEventListener("click", (e) => {
+    let randomNum = parseInt(Math.random() * 100 + 1);
+
+    prevGuess = [];
+    numGuess = 1;
+    guessSlot.innerHTML = "";
     remaining.innerHTML = `${11 - numGuess}`;
-    userInput.removeAttribute('disabled');
+    userInput.removeAttribute("disabled");
     startOver.removeChild(p);
     playGame = true;
-  })
+  });
 }
+```
+
+### PROJECT 5: Press the Key & got displayed on Screen
+
+![alt text](images/image5.png)
+
+```javascript
+const insert = document.getElementById("insert");
+
+window.addEventListener("keydown", (e) => {
+  // console.log(e)
+  insert.innerHTML = `
+  <div class=color>
+  <table>
+  <tr>
+    <th>Key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+    <td>${e.key === " " ? "Space" : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+</table>
+  </div>`;
+});
+```
+
+### Project 6: Change the Background color every second
+
+![alt text](images/image6.png)
+
+```javascript
+// Generate a random color
+const randomColor = function () {
+  const hex = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += hex[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+console.log(randomColor());
+
+let intervalId;
+
+const startChangingColor = function () {
+  // if is used for best practises: to check before performing
+  if (!intervalId) {
+    intervalId = setInterval(() => {
+      document.body.style.backgroundColor = randomColor();
+    }, 1000);
+  }
+};
+const stopChangingColor = function () {
+  clearInterval(intervalId);
+  // flush out intervalID
+  intervalId = null;
+};
+
+document.querySelector("#start").addEventListener("click", startChangingColor);
+
+document.querySelector("#stop").addEventListener("click", stopChangingColor);
 ```

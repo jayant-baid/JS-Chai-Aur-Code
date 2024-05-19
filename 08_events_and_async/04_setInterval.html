@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Jayant Baid</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    //! 2 types of pass the handler
+    // -> writing inside the setInterval
+    // -> writing outside the setInterval
+
+    // const sayDate = function () {
+    //     console.log("Jayant", Date.now())
+    // }
+    // setInterval(sayDate, 1000)
+
+    // const sayDate = function (str) {
+    //     console.log("Jayant", str, Date.now())
+    // }
+    // const intervalID = setInterval(sayDate, 1000, "hii"); // 3rd one is the parameters, which will be pass into the func
+
+
+    let intervalID;
+
+    document.querySelector('#start').addEventListener('click', () => {
+        intervalID = setInterval((str) => {
+            console.log("Jayant", str, Date.now())
+        }, 1000, "hii");
+
+    })
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(intervalID)
+    })
+</script>
+
+</html>
