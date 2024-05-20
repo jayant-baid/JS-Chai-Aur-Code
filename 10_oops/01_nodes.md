@@ -28,3 +28,7 @@ Programming paradigm -> code likhne ka structure kesa hoga
 - Encapsulation (wrap up data)
 - Inheritance
 - Polymorphism (many forms -> ek hi method bahot sare kaam kardeta h)
+
+### Array, strings, func sb object hi h
+![alt text](images/image.png)
+<p style="text-align: center; font-weight: bold">(see more in lec 3)</p>
