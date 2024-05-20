@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            //! Business Requirement 
+            // Jese hi page load ho, ek obj create ho jae react ka
+            document.querySelector('button')
+            .addEventListener('click', this.handleClick.bind(this))
+
+        }
+        // Req: Ref mil jae btn ka and clg ho jae
+        handleClick(){
+            console.log("Button Clicked")
+            console.log(this) // yeh nhi chl rha, this ka ref kho gya h, 
+            // o/p: undefined, when not using bind
+        }
+    }
+    const app = new React();
+</script>
+
+</html>
+<!-- 
+    * With the bind() method, an object can borrow a method from another object 
+-->
